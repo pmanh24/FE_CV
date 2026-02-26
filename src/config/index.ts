@@ -2,7 +2,7 @@ export const API_URL = import.meta.env.VITE_API_URL;
 
 // API Configuration
 export const API_CONFIG = {
-  BASE_URL: import.meta.env.VITE_API_URL || 'https://api.viettelsoftware.com',
+  BASE_URL: import.meta.env.VITE_API_URL || 'https://wevcv.onrender.com',
   TIMEOUT: 30000,
   ENDPOINTS: {
     AUTH: {
