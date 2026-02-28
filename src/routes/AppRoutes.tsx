@@ -27,6 +27,7 @@ import LeadRoute from "./auth/LeadRoute";
 import LeadLayout from "@/layout/lead/LeadLayout";
 import ManageCv from "@/pages/lead/CvManagement";
 import ManageProject from "@/pages/lead/ProjectManagement";
+import ProjectDetail from "@/pages/user/Project";
 
 interface AppRoutesProps {
   language: "vi" | "en";
@@ -78,12 +79,13 @@ export default function AppRoutes({ language, setLanguage }: AppRoutesProps) {
           <Route path="/profile" element={<Profile language={language} />} />
           <Route path="/about" element={<About language={language} />} />
           <Route path="/contact" element={<Contact language={language} />} />
+          <Route path="/project" element={<ProjectDetail />} />
+          
           <Route
             path="/settings"
             element={<Settings language={language} setLanguage={setLanguage} />}
           />
           <Route path="/cvs-edit" element={<CurriculumVitae />} />
-          <Route path="/project" element={<Project />} />
         </Route>
       </Route>
 
