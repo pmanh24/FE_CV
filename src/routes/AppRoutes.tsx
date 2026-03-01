@@ -27,7 +27,9 @@ import LeadRoute from "./auth/LeadRoute";
 import LeadLayout from "@/layout/lead/LeadLayout";
 import ManageCv from "@/pages/lead/CvManagement";
 import ManageProject from "@/pages/lead/ProjectManagement";
-import ProjectDetail from "@/pages/user/Project";
+import MyProjectPage from "@/pages/user/ProtectPages/Project";
+import ShareCv from "@/pages/user/PublicPages/ShareCv";
+import CvManagement from "@/pages/admin/CvManagement";
 
 interface AppRoutesProps {
   language: "vi" | "en";
@@ -38,37 +40,14 @@ export default function AppRoutes({ language, setLanguage }: AppRoutesProps) {
   return (
     <Routes>
       {/* Public Routes */}
-      <Route
-        path="/"
-        element={<HomePage language={language} setLanguage={setLanguage} />}
-      />
-      <Route
-        path="/signin"
-        element={<SignInPage language={language} setLanguage={setLanguage} />}
-      />
-      <Route
-        path="/signup"
-        element={<SignUpPage language={language} setLanguage={setLanguage} />}
-      />
-      <Route
-        path="/change-password"
-        element={
-          <ChangePasswordPage language={language} setLanguage={setLanguage} />
-        }
-      />
-      <Route
-        path="/forgot-password"
-        element={
-          <ForgotPasswordPage language={language} setLanguage={setLanguage} />
-        }
-      />
+      <Route path="/" element={<HomePage language={language} setLanguage={setLanguage} />} />
+      <Route path="/signin" element={<SignInPage language={language} setLanguage={setLanguage} />} />
+      <Route path="/signup" element={<SignUpPage language={language} setLanguage={setLanguage} />} />
+      <Route path="/change-password" element={<ChangePasswordPage language={language} setLanguage={setLanguage} />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage language={language} setLanguage={setLanguage} />} />
       <Route path="/check-otp" element={<CheckOtpPage language={language} />} />
-      <Route
-        path="/reset-password"
-        element={
-          <ResetPasswordPage language={language} setLanguage={setLanguage} />
-        }
-      />
+      <Route path="/reset-password" element={<ResetPasswordPage language={language} setLanguage={setLanguage} />} />
+      <Route path="/share-cv/:token" element={<ShareCv />} />
 
       {/* Protected Routes with Layout */}
       <Route element={<UserRoute />}>
@@ -79,13 +58,13 @@ export default function AppRoutes({ language, setLanguage }: AppRoutesProps) {
           <Route path="/profile" element={<Profile language={language} />} />
           <Route path="/about" element={<About language={language} />} />
           <Route path="/contact" element={<Contact language={language} />} />
-          <Route path="/project" element={<ProjectDetail />} />
-          
+          <Route path="/project" element={<MyProjectPage />} />
           <Route
             path="/settings"
             element={<Settings language={language} setLanguage={setLanguage} />}
           />
           <Route path="/cvs-edit" element={<CurriculumVitae />} />
+          <Route path="/project" element={<Project />} />
         </Route>
       </Route>
 
@@ -102,6 +81,7 @@ export default function AppRoutes({ language, setLanguage }: AppRoutesProps) {
           <Route index element={<DashBoard />} />
           <Route path="dashboard" element={<DashBoard />} />
           <Route path="users" element={<UserManagement />} />
+          <Route path="cvs" element={<CvManagement />} />
           <Route path="projects" element={<ProjectManagement />} />
           <Route path="projects/:id" element={<ProjectDetailPage />} />
         </Route>
